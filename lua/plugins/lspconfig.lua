@@ -27,7 +27,6 @@ return {
         local mason_tool_installer = require("mason-tool-installer")
         local mason_null_ls = require("mason-null-ls")
         local null_ls = require("null-ls")
-        local configs = require("lspconfig.configs")
         local cmp = require("cmp")
         local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
@@ -57,6 +56,7 @@ return {
         vim.list_extend(mason_ensure_installed, {
             "stylua",
             "pyright",
+            "rust-analyzer",
         })
         mason_tool_installer.setup({
             ensure_installed = mason_ensure_installed,

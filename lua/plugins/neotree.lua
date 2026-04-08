@@ -41,25 +41,16 @@ return {
         },
         lazy = false,
         config = function()
-            -- If you want icons for diagnostic errors, you'll need to define them somewhere.
-            -- In Neovim v0.10+, you can configure them in vim.diagnostic.config(), like:
-            --
-            -- vim.diagnostic.config({
-            --   signs = {
-            --     text = {
-            --       [vim.diagnostic.severity.ERROR] = '',
-            --       [vim.diagnostic.severity.WARN] = '',
-            --       [vim.diagnostic.severity.INFO] = '',
-            --       [vim.diagnostic.severity.HINT] = '󰌵',
-            --     },
-            --   }
-            -- })
-            --
-            -- In older versions, you can define the signs manually:
-            -- vim.fn.sign_define("DiagnosticSignError", { text = " ", texthl = "DiagnosticSignError" })
-            -- vim.fn.sign_define("DiagnosticSignWarn", { text = " ", texthl = "DiagnosticSignWarn" })
-            -- vim.fn.sign_define("DiagnosticSignInfo", { text = " ", texthl = "DiagnosticSignInfo" })
-            -- vim.fn.sign_define("DiagnosticSignHint", { text = "󰌵", texthl = "DiagnosticSignHint" })
+            vim.diagnostic.config({
+              signs = {
+                text = {
+                  [vim.diagnostic.severity.ERROR] = '',
+                  [vim.diagnostic.severity.WARN] = '',
+                  [vim.diagnostic.severity.INFO] = '',
+                  [vim.diagnostic.severity.HINT] = '󰌵',
+                },
+              }
+            })
 
             vim.keymap.set("n", "T", "<Cmd>Neotree reveal<CR>")
 
@@ -72,13 +63,6 @@ return {
                 open_files_using_relative_paths = false,
                 sort_case_insensitive = false,                                     -- used when sorting files and directories in the tree
                 sort_function = nil,                                               -- use a custom function for sorting files and directories in the tree
-                -- sort_function = function (a,b)
-                --       if a.type == b.type then
-                --           return a.path > b.path
-                --       else
-                --           return a.type > b.type
-                --       end
-                --   end , -- this sorts files and directories descendantly
                 event_handlers = {
                     {
                         event = "neo_tree_buffer_enter",
