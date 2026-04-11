@@ -32,4 +32,12 @@ vim.opt.updatetime = 50
 
 vim.opt.colorcolumn = "100"
 
-vim.lsp.set_log_level('debug')
+vim.lsp.set_log_level("debug")
+
+local function set_inlay_hint_hl()
+	vim.api.nvim_set_hl(0, "LspInlayHint", {
+		link = "Comment",
+	})
+end
+vim.api.nvim_create_autocmd("ColorScheme", { callback = set_inlay_hint_hl })
+set_inlay_hint_hl()
